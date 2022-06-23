@@ -69,9 +69,11 @@ export default {
   methods:{
     reset() {
       this.bill = '';
+      this.total ='',
       this.person = '';
       this.personTip ='';
       this.custom = '';
+      this.error =''
     },
     updateValue(event) {
       const value = event.target.value
