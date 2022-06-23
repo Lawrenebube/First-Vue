@@ -13,7 +13,7 @@
         <div @click="calculatePercent(15)" class="rate">15%</div>
         <div @click="calculatePercent(25)" class="rate">25%</div>
         <div @click="calculatePercent(50)" class="rate">50%</div>
-        <input v-model="custom"  @keyup.enter="customPercent" type="number" class="custom" placeholder="Custom">
+        <input v-model="custom"  @keydown.enter="customPercent" type="number" class="custom" placeholder="Custom">
       </section>
       <p>Number of People <span class="error">{{error}}</span></p> 
       <div class="input">
