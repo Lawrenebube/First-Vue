@@ -242,7 +242,7 @@ export default {
     border-radius: 5px;
     max-height: 30px;
     color:hsl(183, 100%, 15%) ;
-    margin: auto auto;
+    margin: 30px auto;
     width: 80%;
   }
   .error{
