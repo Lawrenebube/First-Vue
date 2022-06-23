@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt=" logo" src="./assets/logo.svg">
+    <img class="logo" alt=" logo" src="./assets/logo.svg">
     <TipCalculator/>
   </div>
 </template>
@@ -30,8 +30,13 @@ export default {
   font-weight: 700;
   text-align: center;
   padding-top: 40px;
-  font-size: 24px;
-  
-  
+  font-size: 24px;  
+}
+@media ( max-width:1000px) {
+  .logo{
+    margin: auto 210px auto;
+    text-align: center;
+    justify-content: center;
+  }
 }
 </style>

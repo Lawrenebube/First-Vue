@@ -4,7 +4,7 @@
       <p>BILL</p>
       <div class="input">
         <img :src= "require('../assets/icon-dollar.svg')" alt="dollar" >
-        <input id="bills" v-model="bill" type="number">
+        <input :value="bill" @input="updateValue" id="bills" type="number">
       </div>
       <p>Select Tip %</p>
       <section class="rates">
@@ -13,7 +13,7 @@
         <div @click="calculatePercent(15)" class="rate">15%</div>
         <div @click="calculatePercent(25)" class="rate">25%</div>
         <div @click="calculatePercent(50)" class="rate">50%</div>
-        <input  v-model="custom" @keyup.enter="customPercent" type="number" class="custom" placeholder="Custom">
+        <input v-model="custom"  @keyup.enter="customPercent" type="number" class="custom" placeholder="Custom">
       </section>
       <p>Number of People <span class="error">{{error}}</span></p> 
       <div class="input">
@@ -55,7 +55,7 @@ export default {
      person:'',
      personTip: '',
      custom:'',
-     error: ""
+     error: "",
     }
   },
  
@@ -63,7 +63,7 @@ export default {
     person: function() {
       if (this.person == 0){
         this.error = "Can't be zero"
-      }
+      };    
     }
   },
   methods:{
@@ -72,6 +72,13 @@ export default {
       this.person = '';
       this.personTip ='';
       this.custom = '';
+    },
+    updateValue(event) {
+      const value = event.target.value
+      if (String(value).length <= 8) {
+        this.bill = value
+      }
+      this.$forceUpdate()
     },
     checkZero(num) {
       if (this.person == 0){
@@ -114,18 +121,17 @@ export default {
   grid-template-columns: 1fr 1fr;
   background-color:hsl(0, 0%, 100%) ;
   margin: 20px auto;
-  /* width: 800px; */
   max-width:1000px;
   border-radius: 20px;
 }
 .calculate {
   background-color:hsl(0, 0%, 100%) ;
-  /* margin: 30px 20px 30px 30px ; */
   margin: 30px auto;
   padding: auto;
   text-align: left;
   font-size: 14px;
 }
+
   img {
     height: 20px;
     text-align: center;
@@ -146,8 +152,8 @@ export default {
     border-radius: 7px;
     color: hsl(183, 100%, 15%);
   }
+
   input {
-    /* background-color: white; */
     background-color: hsl(189, 41%, 97%);
     color: hsl(183, 100%, 15%);
     border:none;
@@ -156,13 +162,12 @@ export default {
     justify-content: center;
     font-weight: 700;
     font-size: 24px;
-    /* padding-left: 30px; */
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+  }
   .rates{
     font-size: 18px;
     display: grid;
@@ -198,16 +203,19 @@ export default {
     padding: 20px 30px 0px 30px;
     margin: 30px ;
   }
+
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-weight: 700;
   }
+
   section p{
     color: hsl(0, 0%, 100%);
     font-size: 14px;
     max-width: 100px;
   }
+
   section img {
     height: 30px;
     color:hsl(172, 67%, 45%);
@@ -240,8 +248,7 @@ export default {
     color: red;
   }
 
-  @media ( max-width:768px) {
-    
+  @media ( max-width:1000px) { 
     .main {
     display: grid;
     grid-template-columns: 1fr ;
@@ -250,7 +257,6 @@ export default {
     width:500px;
     }
     .calculate {
-  
     margin: 30px auto;
     padding: auto;
     text-align: left;
@@ -260,14 +266,16 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
     gap: 1em;
-    
     margin-bottom: 20px;
     margin-top: 10px;
+  }
+  .custom {
+    max-width: 170px;
   }
   .total-box {
     display: grid;
     grid-template-columns: 1fr;
-     gap: 1em;
+    gap: 1em;
     justify-content: center;
     text-align: center;
     width: 380px;
@@ -279,6 +287,5 @@ export default {
     margin: 20px auto 30px auto;
     width: 80%;
   }
-}
-    
+}    
 </style>
