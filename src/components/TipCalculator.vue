@@ -71,6 +71,11 @@ export default {
       if (this.person == 0){
         this.error = "Can't be zero"
       }   
+    },
+    custom: function() {
+      if (this.custom == 0 || this.custom == ''){
+        console.log("no custom value")
+      }   
     }
   },
   methods:{
@@ -102,7 +107,10 @@ export default {
       this.summation();
     },
     customPercent(){
-      if (this.person == 0){
+     if(this.custom == 0){
+      console.log("no custom value")
+     }
+      else if (this.person == 0){
         this.error = "Can't be zero"
       }
       else {
