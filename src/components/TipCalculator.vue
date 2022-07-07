@@ -75,8 +75,12 @@ export default {
     },
     custom:function(){
        if (this.custom == 0 || this.custom == ''){
-        console.log("no custom value")
-      };    
+        this.error = "Can't be zero"
+      }
+      else {
+        this.checkZero(val);
+        this.summation();
+      }    
     }
   },
   methods:{
