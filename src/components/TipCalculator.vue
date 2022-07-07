@@ -69,7 +69,13 @@ export default {
   watch: {
     person: function() {
       if (this.person == 0){
-        this.error = "Can't be zero"
+        // this.error = "Can't be zero"
+        console.log("Can't be zero")
+      };    
+    },
+    custom:function(){
+       if (this.custom == 0 || this.custom == ''){
+        console.log("no custom value")
       };    
     }
   },
@@ -98,8 +104,13 @@ export default {
       }
     },
     calculatePercent(val) {
-      this.checkZero(val);
-      this.summation();
+      if (this.custom == 0){
+        console.log ('no custom')
+      }
+      else {
+        this.checkZero(val);
+        this.summation();
+      }
     },
     customPercent(){
       if (this.person == 0){
