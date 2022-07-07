@@ -18,7 +18,7 @@
         <div @click="calculatePercent(25)" class="rate">25%</div>
         <div @click="calculatePercent(50)" class="rate">50%</div>
         <input v-model="custom" 
-         @keyup.enter="customPercent"
+         @keydown.enter="customPercent"
           type="number" 
           class="custom" placeholder="Custom">
       </section>
@@ -117,7 +117,6 @@ export default {
         this.personTip = `${parseFloat(this.bill*(this.custom/100)/this.person).toFixed(2)}`;
         this.summation();     
          }
-        
       },
     summation(){
       if (this.person == 0){
